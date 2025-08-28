@@ -15,6 +15,8 @@ namespace Infrastructure.Data
                 query = query.OrderByDescending(specification.OrderByDesc);
             if (specification.IsDistinct)
                 query = query.Distinct();
+            if (specification.IsPagingEnabled)
+                query = query.Skip(specification.Skip).Take(specification.Take);
             return query;
         }
 
@@ -33,6 +35,8 @@ namespace Infrastructure.Data
                 selectQuery = query.Select(specification.Select);
             if (specification.IsDistinct)
                 selectQuery = selectQuery?.Distinct();
+            if (specification.IsPagingEnabled)
+                selectQuery = selectQuery?.Skip(specification.Skip).Take(specification.Take);
             return selectQuery ?? query.Cast<TResult>();
         }
     }

@@ -62,6 +62,10 @@ namespace Infrastructure.Data
         {
             return _dbSet.Any(x => x.Id == id);
         }
+        public async Task<int> CountAsync(ISpecification<T> specification)
+        {
+            return await specification.ApplyCriteria(_dbSet.AsQueryable()).CountAsync();
+        }
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {

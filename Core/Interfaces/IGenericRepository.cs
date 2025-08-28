@@ -15,5 +15,6 @@ namespace Core.Interfaces
         void Delete(T entity);
         Task<bool> SaveChangesAsync();
         bool Exists(int id);
+        Task<int> CountAsync(ISpecification<T> specification);
     }
 }
