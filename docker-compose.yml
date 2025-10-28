@@ -5,7 +5,7 @@ services:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: Edkart@2024
     ports:
-      - "1434:1433"
+      - "1435:1433"
     
 
 
